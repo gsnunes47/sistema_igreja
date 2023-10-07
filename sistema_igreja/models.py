@@ -5,4 +5,6 @@ class Membro(database.Model):
     nome = database.Column(database.String, nullable=False)
     data_nascimento = database.Column(database.DateTime, nullable=False)
     numero = database.Column(database.String, nullable=False)
-    endereço = database.Column(database.String, nullable=False)
+    endereco = database.Column(database.String, nullable=False)
+    cargo = database.Column(database.String, nullable=False)
+    

@@ -7,8 +7,11 @@
 </head>
 <body>
     <h1>Igreja Cristã Senhor Justiça Nossa</h1>
-    <br>
-    <form>
+    
+
+    <h2>Cadastrar novos membros</h2>
+
+    <form method="POST">
 
         {{ form.csrf_token }}
 
@@ -23,6 +26,9 @@
         <br><br>
         {{ form.endereco.label() }}
         {{ form.endereco() }}
+        <br><br>
+        {{ form.cargo.label() }}
+        {{ form.cargo() }}
         <br><br>
         {{ form.botao_confirmacao }}
 

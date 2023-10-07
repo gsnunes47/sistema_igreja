@@ -8,4 +8,4 @@ class NovoMembro(FlaskForm):
     numero = StringField("Número", validators=[DataRequired(), Length(9, 11)])
     endereco = StringField("Endereço", validators=[DataRequired()])
     botao_confirmacao = SubmitField("Cadastrar")
-    #ddd = SelectField("DDD", choices = [('gerente', 'Gerente'), ('atendente', 'Atendente'), ('funcionario', 'Funcionário')])
+    cargo = SelectField("Cargo Eclesiastico", choices = [('pastor', 'Pastor'), ('diacono', 'Diacono'), ('presbítero', 'Presbítero'), ('cooperador', 'Coorperador'), ('membro', 'Membro')])
