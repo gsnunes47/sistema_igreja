@@ -7,4 +7,3 @@ class Membro(database.Model):
     numero = database.Column(database.String, nullable=False)
     endereco = database.Column(database.String, nullable=False)
     cargo = database.Column(database.String, nullable=False)
-    
