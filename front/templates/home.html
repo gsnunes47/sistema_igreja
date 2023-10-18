@@ -33,6 +33,52 @@
         {{ form.botao_confirmacao }}
 
     </form>
+    <br>
+
+    <h2>Membros</h2>
+
+    <table border="1" class="table">
+        <tr>
+            <td>Nome</td>
+            <td>Data de Nascimento</td>
+            <td>Numero</td>
+            <td>Endereço</td>
+            <td>Cargo</td>
+        </tr>
+    
+        {% for membro in lista_membros %}
+        <tr>
+            <td>{{membro.nome}}</td>
+            <td>{{membro.data_nascimento}}</td>
+            <td>{{membro.numero}}</td>
+            <td>{{membro.endereco}}</td>
+            <td>{{membro.cargo}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Aniversariantes do Mês</h2>
+
+    <table border="1" class="table">
+        <tr>
+            <td>Nome</td>
+            <td>Data de Nascimento</td>
+            <td>Numero</td>
+            <td>Endereço</td>
+            <td>Cargo</td>
+        </tr>
+    
+        {% for membro in lista_membros %}
+        <tr>
+            <td>{{membro.nome}}</td>
+            <td>{{membro.data_nascimento}}</td>
+            <td>{{membro.numero}}</td>
+            <td>{{membro.endereco}}</td>
+            <td>{{membro.cargo}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
 
 </body>
 </html>

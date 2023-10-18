@@ -8,9 +8,9 @@ import json
 def novo_membro():
     membro_novo = request.get_json()
     membro_novo = json.loads(membro_novo)
-    date = datetime.date(int(membro_novo['data_nascimento'][:4]), int(membro_novo['data_nascimento'][5:7]), int(membro_novo['data_nascimento'][8:]))
+    #date = datetime.date(int(membro_novo['data_nascimento'][:4]), int(membro_novo['data_nascimento'][5:7]), int(membro_novo['data_nascimento'][8:]))
     membro = Membro(nome=membro_novo['nome'],
-                    data_nascimento=date, #membro_novo['data_nascimento']
+                    data_nascimento=membro_novo['data_nascimento'], #membro_novo['data_nascimento']
                     numero=membro_novo['numero'],
                     endereco=membro_novo['endereco'],
                     cargo=membro_novo['cargo'])
@@ -22,10 +22,10 @@ def novo_membro():
 
 @app.route('/membros', methods=["GET"])
 def mostrar_membros():
-    membros = []
-    membros = Livros.query.all()
-    for l in livros_query:
+    lista_membros = []
+    membros = Membro.query.all()
+    for l in membros:
         l = l.__dict__
         treat = l.pop('_sa_instance_state')
-        livros.append(l)
-    return jsonify(livros)
+        lista_membros.append(l)
+    return jsonify(lista_membros)
