@@ -8,9 +8,8 @@ import json
 def novo_membro():
     membro_novo = request.get_json()
     membro_novo = json.loads(membro_novo)
-    #date = datetime.date(int(membro_novo['data_nascimento'][:4]), int(membro_novo['data_nascimento'][5:7]), int(membro_novo['data_nascimento'][8:]))
     membro = Membro(nome=membro_novo['nome'],
-                    data_nascimento=membro_novo['data_nascimento'], #membro_novo['data_nascimento']
+                    data_nascimento=membro_novo['data_nascimento'],
                     numero=membro_novo['numero'],
                     endereco=membro_novo['endereco'],
                     cargo=membro_novo['cargo'])

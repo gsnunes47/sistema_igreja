@@ -11,14 +11,14 @@ def home():
     form = NovoMembro()
     lista_membros = requests.get('http://127.0.0.1:5000/membros').json()
     mes_atual = datetime.datetime.now().month
-    if form.validate_on_submit():
+    if form.is_submitted():
         data = form.data_nascimento.data.strftime('%d-%m-%Y - %H:%M:%S')[:10]
         membro = f"""{"{"}"nome": "{form.nome.data}", "data_nascimento": "{data}", "numero": "{form.numero.data}", "endereco": "{form.endereco.data}", "cargo": "{form.cargo.data}"{"}"}"""
         membro = jsonify(membro)
         membro = membro.json
         novo_membro = requests.post(url='http://localhost:5000/membros', json=membro)
         return redirect(url_for('home'))
-    return render_template('home.html', form=form, lista_membros=lista_membros)  
+    return render_template('home.html', form=form, lista_membros=lista_membros, mes_atual=str(mes_atual))  
 
 if __name__ == '__main__':
     app.run(debug=True, port=8081)

@@ -33,6 +33,7 @@
         {{ form.botao_confirmacao }}
 
     </form>
+
     <br>
 
     <h2>Membros</h2>
@@ -69,6 +70,7 @@
         </tr>
     
         {% for membro in lista_membros %}
+        {% if membro.data_nascimento[3:5] == mes_atual %}
         <tr>
             <td>{{membro.nome}}</td>
             <td>{{membro.data_nascimento}}</td>
@@ -76,6 +78,7 @@
             <td>{{membro.endereco}}</td>
             <td>{{membro.cargo}}</td>
         </tr>
+        {% endif %}
         {% endfor %}
     </table>
 
