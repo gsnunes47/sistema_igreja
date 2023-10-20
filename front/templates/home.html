@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
+{% block body %}
 <body>
     <h1>Igreja Cristã Senhor Justiça Nossa</h1>
     
 
     <h2>Cadastrar novos membros</h2>
 
+    {% block form %}
     <form method="POST">
 
         {{ form.csrf_token }}
@@ -33,6 +36,7 @@
         {{ form.botao_confirmacao }}
 
     </form>
+    {% endblock %}
 
     <br>
 
@@ -90,4 +94,6 @@
 
 
 </body>
+{% endblock %}
+
 </html>

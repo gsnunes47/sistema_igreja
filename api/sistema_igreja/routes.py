@@ -47,6 +47,7 @@ def deletar_membro():
 @app.route('/membros', methods=["PUT"])
 def editar_membro():
     membro_json = request.get_json()
+    membro_json = json.loads(membro_json)
     membro_obj = Membro.query.filter_by(id=membro_json['id']).first()   
     membro_obj.nome = membro_json['nome']
     membro_obj.data_nascimento = membro_json['data_nascimento']

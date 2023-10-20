@@ -1,0 +1,33 @@
+{% extends "home.html" %}
+
+{% block body %}
+
+<h2>Editar membro</h2>
+
+    {% block form %}
+
+        <form method="POST">
+
+            {{ form.csrf_token }}
+
+            {{ form.nome.label() }}
+            {{ form.nome() }}
+            <br><br>
+            {{ form.data_nascimento.label() }}
+            {{ form.data_nascimento() }}
+            <br><br>
+            {{ form.numero.label() }}
+            {{ form.numero() }}
+            <br><br>
+            {{ form.endereco.label() }}
+            {{ form.endereco() }}
+            <br><br>
+            {{ form.cargo.label() }}
+            {{ form.cargo() }}
+            <br><br>
+            {{ form.botao_confirmacao }}
+
+        </form>
+
+    {% endblock %}
+{% endblock %}
