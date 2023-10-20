@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, redirect, url_for
-from forms import NovoMembro
+from forms import NovoMembro, EditarMembro
 import datetime
 import requests
 
@@ -34,7 +34,7 @@ def excluir(id):
 @app.route('/editar/<id>', methods=['POST', 'GET'])
 def editar(id):
     id = int(id)
-    form = NovoMembro()
+    form = EditarMembro()
     if form.is_submitted():
         data = form.data_nascimento.data.strftime('%d-%m-%Y - %H:%M:%S')[:10]
         edicao = f"""{"{"}"id": "{id}", "nome": "{form.nome.data}", "data_nascimento": "{data}", "numero": "{form.numero.data}", "endereco": "{form.endereco.data}", "cargo": "{form.cargo.data}"{"}"}"""
