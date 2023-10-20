@@ -40,20 +40,24 @@
 
     <table border="1" class="table">
         <tr>
+            <td>Id</td>
             <td>Nome</td>
             <td>Data de Nascimento</td>
             <td>Numero</td>
             <td>Endereço</td>
             <td>Cargo</td>
+            <td>Ações</td>
         </tr>
     
         {% for membro in lista_membros %}
         <tr>
+            <td>{{membro.id}}</td>
             <td>{{membro.nome}}</td>
             <td>{{membro.data_nascimento}}</td>
             <td>{{membro.numero}}</td>
             <td>{{membro.endereco}}</td>
             <td>{{membro.cargo}}</td>
+            <td><a href="{{ url_for('excluir', id = membro.id) }}">Excluir</a> | <a href="{{ url_for('editar', id = membro.id) }}">Editar</a></td>
         </tr>
         {% endfor %}
     </table>
@@ -62,6 +66,7 @@
 
     <table border="1" class="table">
         <tr>
+            <td>Id</td>
             <td>Nome</td>
             <td>Data de Nascimento</td>
             <td>Numero</td>
@@ -72,6 +77,7 @@
         {% for membro in lista_membros %}
         {% if membro.data_nascimento[3:5] == mes_atual %}
         <tr>
+            <td>{{membro.id}}</td>
             <td>{{membro.nome}}</td>
             <td>{{membro.data_nascimento}}</td>
             <td>{{membro.numero}}</td>

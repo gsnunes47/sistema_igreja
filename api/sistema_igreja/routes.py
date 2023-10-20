@@ -3,6 +3,7 @@ from sistema_igreja import app, database
 from sistema_igreja.models import Membro
 import datetime
 import json
+from pprint import pprint
 
 @app.route('/membros', methods=["POST"])
 def novo_membro():
@@ -21,6 +22,39 @@ def novo_membro():
 
 @app.route('/membros', methods=["GET"])
 def mostrar_membros():
+    lista_membros = []
+    membros = Membro.query.all()
+    for l in membros:
+        l = l.__dict__
+        treat = l.pop('_sa_instance_state')
+        lista_membros.append(l)
+    return jsonify(lista_membros)
+
+@app.route('/membros', methods=["DELETE"])
+def deletar_membro():
+    membro_json = request.get_json()
+    membro_obj = Membro.query.filter_by(id=membro_json['id']).first()
+    database.session.delete(membro_obj)
+    database.session.commit()
+    lista_membros = []
+    membros = Membro.query.all()
+    for l in membros:
+        l = l.__dict__
+        treat = l.pop('_sa_instance_state')
+        lista_membros.append(l)
+    return jsonify(lista_membros)
+
+@app.route('/membros', methods=["PUT"])
+def editar_membro():
+    membro_json = request.get_json()
+    membro_obj = Membro.query.filter_by(id=membro_json['id']).first()   
+    membro_obj.nome = membro_json['nome']
+    membro_obj.data_nascimento = membro_json['data_nascimento']
+    membro_obj.numero = membro_json['numero']
+    membro_obj.endereco = membro_json['endereco']
+    membro_obj.cargo = membro_json['cargo']
+    database.session.commit()
+    membro_obj = Membro.query.filter_by(id=membro_json['id']).first()
     lista_membros = []
     membros = Membro.query.all()
     for l in membros:

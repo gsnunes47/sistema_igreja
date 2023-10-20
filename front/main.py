@@ -20,5 +20,29 @@ def home():
         return redirect(url_for('home'))
     return render_template('home.html', form=form, lista_membros=lista_membros, mes_atual=str(mes_atual))  
 
+@app.route('/excluir/<id>')
+def excluir(id):
+    id = int(id)
+    lista_membros = requests.get('http://127.0.0.1:5000/membros').json()
+    membro_excluido = ''
+    for membro in lista_membros:
+        if membro['id'] == id:
+            membro_excluido = membro
+    excluir_membro = requests.delete(url='http://localhost:5000/membros', json=membro_excluido)
+    return redirect(url_for('home'))
+
+@app.route('/editar/<id>')
+def editar(id):
+    id = int(id)
+    lista_membros = requests.get('http://127.0.0.1:5000/membros').json()
+    # membro_editado = ''
+    # for membro in lista_membros:
+    #     if membro['id'] == id:
+    #         membro_editado = membro
+    # print(membro_editado)
+    edicao = {'cargo': 'pastor', 'data_nascimento': '24-06-2004', 'endereco': 'Rua Alves Seixas 280', 'id': 2, 'nome': 'Gustavo Editado', 'numero': '11951178396'}
+    editar_membro = requests.put(url='http://localhost:5000/membros', json=edicao)
+    return redirect(url_for('home'))
+
 if __name__ == '__main__':
     app.run(debug=True, port=8081)
