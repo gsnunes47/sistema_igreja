@@ -1,0 +1,6 @@
+Flask
+datetime
+flask-wtf
+wtforms
+flask_sqlalchemy
+requests
