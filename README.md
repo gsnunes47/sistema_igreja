@@ -3,7 +3,7 @@
 
  Instruções de como rodar:
 
- 1 - Instale o Python.
+ 1 - Instale o Python. https://www.python.org/downloads/
 
  2 - Abra o terminal e navegue até o diretorio do sistema. (cd + ...\sistema_igreja)
 
