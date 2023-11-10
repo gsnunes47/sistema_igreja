@@ -61,7 +61,7 @@
             <td>{{membro.numero}}</td>
             <td>{{membro.endereco}}</td>
             <td>{{membro.cargo}}</td>
-            <td><a href="{{ url_for('excluir', id = membro.id) }}">Excluir</a> | <a href="{{ url_for('editar', id = membro.id) }}">Editar</a></td>
+            <td><a href="{{ url_for('excluir', id = membro.id) }}" style="text-decoration: none;">Excluir</a> | <a href="{{ url_for('editar', id = membro.id) }}" style="text-decoration: none">Editar</a></td>
         </tr>
         {% endfor %}
     </table>
