@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Igreja ICSJN</title>
 </head>
 
 {% block body %}
@@ -14,7 +14,7 @@
     <h2>Cadastrar novos membros</h2>
 
     {% block form %}
-    <form method="POST">
+    <form method="POST" action="{{url_for('novo_membro')}}">
 
         {{ form.csrf_token }}
 
@@ -41,7 +41,32 @@
     <br>
 
     <h2>Membros</h2>
+    
 
+    <form method="POST" action="{{url_for('filtrar_membros')}}">
+
+        {{ form2.csrf_token }}
+
+        {{ form2.nome.label() }}
+        {{ form2.nome() }}
+        
+        {{ form2.data_nascimento.label() }}
+        {{ form2.data_nascimento() }}
+        
+        {{ form2.numero.label() }}
+        {{ form2.numero() }}
+        
+        {{ form2.endereco.label() }}
+        {{ form2.endereco() }}
+        
+        {{ form2.cargo.label() }}
+        {{ form2.cargo() }}
+        
+        {{ form2.botao_confirmacao }}
+
+    </form>
+
+    <br>
     <table border="1" class="table">
         <tr>
             <td>Id</td>
