@@ -50,15 +50,6 @@
         {{ form2.nome.label() }}
         {{ form2.nome() }}
         
-        {{ form2.data_nascimento.label() }}
-        {{ form2.data_nascimento() }}
-        
-        {{ form2.numero.label() }}
-        {{ form2.numero() }}
-        
-        {{ form2.endereco.label() }}
-        {{ form2.endereco() }}
-        
         {{ form2.cargo.label() }}
         {{ form2.cargo() }}
         
@@ -103,8 +94,7 @@
             <td>Cargo</td>
         </tr>
     
-        {% for membro in lista_membros %}
-        {% if membro.data_nascimento[3:5] == mes_atual %}
+        {% for membro in lista_aniversariantes %}
         <tr>
             <td>{{membro.id}}</td>
             <td>{{membro.nome}}</td>
@@ -113,7 +103,6 @@
             <td>{{membro.endereco}}</td>
             <td>{{membro.cargo}}</td>
         </tr>
-        {% endif %}
         {% endfor %}
     </table>
 

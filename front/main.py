@@ -6,16 +6,17 @@ import requests
 app = Flask('__main__') #, template_folder=r'sistema_igreja\templates')
 app.config['SECRET_KEY'] = 'chavesecreta'
 
-
-
-
 @app.route('/', methods=['GET', 'POST'])
 def home():
     form = NovoMembro()
     form2 = FiltarMembros()
     lista_membros = requests.get('https://api-igreja.onrender.com/membros').json()
     mes_atual = datetime.datetime.now().month
-    return render_template('home.html', form=form, form2=form2, lista_membros=lista_membros, mes_atual=str(mes_atual))  
+    lista_aniversariantes = []
+    for membro in lista_membros:
+        if membro['data_nascimento'][3:5] == str(mes_atual):
+            lista_aniversariantes.append(membro)
+    return render_template('home.html', form=form, form2=form2, lista_membros=lista_membros, lista_aniversariantes=lista_aniversariantes, mes_atual=str(mes_atual))  
 
 @app.route('/novo_membro', methods=['GET', 'POST'])
 def novo_membro():
@@ -23,6 +24,10 @@ def novo_membro():
     form2 = FiltarMembros()
     lista_membros = requests.get('https://api-igreja.onrender.com/membros').json()
     mes_atual = datetime.datetime.now().month
+    lista_aniversariantes = []
+    for membro in lista_membros:
+        if membro['data_nascimento'][3:5] == str(mes_atual):
+            lista_aniversariantes.append(membro)
     if form.is_submitted():
         data = form.data_nascimento.data.strftime('%d-%m-%Y - %H:%M:%S')[:10]
         membro = f"""{"{"}"nome": "{form.nome.data}", "data_nascimento": "{data}", "numero": "{form.numero.data}", "endereco": "{form.endereco.data}", "cargo": "{form.cargo.data}"{"}"}"""
@@ -30,7 +35,7 @@ def novo_membro():
         membro = membro.json
         novo_membro = requests.post(url='https://api-igreja.onrender.com/membros', json=membro)
         return redirect(url_for('home'))
-    return render_template('home.html', form=form, form2=form2, lista_membros=lista_membros, mes_atual=str(mes_atual))  
+    return render_template('home.html', form=form, form2=form2, lista_membros=lista_membros, lista_aniversariantes=lista_aniversariantes,  mes_atual=str(mes_atual))  
 
 @app.route('/filtrar_membros', methods=['GET', 'POST'])
 def filtrar_membros():
@@ -38,13 +43,23 @@ def filtrar_membros():
     form2 = FiltarMembros()
     lista_membros = requests.get('https://api-igreja.onrender.com/membros').json()
     mes_atual = datetime.datetime.now().month
+    lista_aniversariantes = []
+    for membro in lista_membros:
+        if membro['data_nascimento'][3:5] == str(mes_atual):
+            lista_aniversariantes.append(membro)
     if form2.is_submitted():
-        data = form2.data_nascimento.data.strftime('%d-%m-%Y - %H:%M:%S')[:10]
-        # teste = f"""{"{"}"nome": "{form2.nome.data}", "data_nascimento": "{data}", "numero": "{form2.numero.data}", "endereco": "{form2.endereco.data}", "cargo": "{form2.cargo.data}"{"}"}"""
-        
-        return redirect(url_for('home'))
-    return render_template('home.html', form=form, form2=form2, lista_membros=lista_membros, mes_atual=str(mes_atual))  
-
+        # data = form2.data_nascimento.data.strftime('%d-%m-%Y - %H:%M:%S')[:10]
+        lista_membros = requests.get('https://api-igreja.onrender.com/membros').json()
+        membro_filtrado = []
+        for membro in lista_membros:
+            if form2.cargo.data == 'vazio':
+                if form2.nome.data in membro['nome']:
+                    membro_filtrado.append(membro)
+            else:
+                if form2.nome.data in membro['nome'] and membro['cargo'] == form2.cargo.data:
+                    membro_filtrado.append(membro)
+        return render_template('home.html', form=form, form2=form2, lista_membros=membro_filtrado, lista_aniversariantes=lista_aniversariantes, mes_atual=str(mes_atual))  
+    return render_template('home.html', form=form, form2=form2, lista_membros=lista_membros, lista_aniversariantes=lista_aniversariantes, mes_atual=str(mes_atual))  
 
 @app.route('/excluir/<id>')
 def excluir(id):
