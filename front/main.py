@@ -16,9 +16,11 @@ def membros():
     form2 = FiltarMembros()
     lista_membros = requests.get('https://api-igreja.onrender.com/membros').json()
     mes_atual = datetime.datetime.now().month
+    if mes_atual <  10:
+        mes_atual = '0' + str(mes_atual)
     lista_aniversariantes = []
     for membro in lista_membros:
-        if membro['data_nascimento'][3:5] == str(mes_atual):
+        if membro['data_nascimento'][3:5] == mes_atual:
             lista_aniversariantes.append(membro)
     return render_template('membros.html', form=form, form2=form2, lista_membros=lista_membros, lista_aniversariantes=lista_aniversariantes, mes_atual=str(mes_atual))  
 
