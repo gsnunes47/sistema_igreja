@@ -7,7 +7,7 @@ app = Flask('__main__', static_folder="static") #, template_folder=r'sistema_igr
 app.config['SECRET_KEY'] = 'chavesecreta'
 
 @app.route('/', methods=['GET', 'POST'])
-def redirect1():
+def home():
     return render_template('home.html')
 
 @app.route('/membros', methods=['GET', 'POST'])
