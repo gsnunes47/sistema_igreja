@@ -1,0 +1,28 @@
+nav img {
+	width: 150px;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 1424px;
+}
+
+.navbar {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.header .cadastrar {
+	color: var(--color2);
+}
+
+.header a {
+	font-weight: 600;
+	color: black;
+	text-decoration: none;
+	padding: 10px 10px;
+}

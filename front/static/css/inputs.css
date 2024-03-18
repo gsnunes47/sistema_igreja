@@ -1,0 +1,106 @@
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+form > * {
+	flex: 1;
+}
+
+.input-wrapper {
+	position: relative;
+}
+
+input,
+select {
+	box-sizing: border-box;
+	background-color: var(--darkgray);
+	border: none;
+	border-bottom: 2px solid transparent;
+	border-radius: 5px;
+	width: 100%;
+	font-size: 1.25rem;
+	color: #1a1b1f;
+	text-align: center;
+	padding: 5px;
+	outline: none;
+}
+
+input:focus {
+	border-color: black;
+}
+
+input[type='submit'] {
+	border: 3px solid var(--color2);
+	cursor: pointer;
+	color: var(--color2);
+
+	background: linear-gradient(to right, var(--color2) 50%, white 50%);
+	background-size: 200% 100%;
+	background-position: right bottom;
+	transition: all 0.5s ease-out;
+}
+
+input[type='submit']:hover {
+	background-position: left bottom;
+	color: white;
+}
+
+label {
+	position: absolute;
+	font-size: 1.25rem;
+	text-align: center;
+	top: 6px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	pointer-events: none;
+	transition: 0.2s;
+	color: var(--darkestgray);
+}
+
+label.active,
+label.perma {
+	font-size: 1rem;
+	top: -17px;
+	left: 10px;
+	transform: none;
+	color: var(--black);
+}
+
+.cadastrar form {
+	display: grid;
+	grid-template-areas:
+		'nome nome cargo'
+		'nasc tel tel'
+		'end end end'
+		'. submit .';
+}
+
+.cadastrar h2 {
+	text-align: center;
+}
+
+.novo-nom {
+	grid-area: nome;
+}
+
+.novo-car {
+	grid-area: cargo;
+}
+
+.novo-nas {
+	grid-area: nasc;
+}
+
+.novo-tel {
+	grid-area: tel;
+}
+
+.novo-end {
+	grid-area: end;
+}
+
+.novo-sub {
+	grid-area: submit;
+}

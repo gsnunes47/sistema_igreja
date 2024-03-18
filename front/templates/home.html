@@ -1,113 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Igreja ICSJN</title>
-</head>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ICSJN</title>
+		<link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
 
-{% block body %}
-<body>
-    <h1>Igreja Cristã Senhor Justiça Nossa</h1>
-    
+		<link rel="stylesheet" href="../static/css/geral.css" />
+		<link rel="stylesheet" href="../static/css/header.css" />
+		<link rel="stylesheet" href="../static/css/home.css" />
+		<link rel="stylesheet" href="../static/css/footer.css" />
+	</head>
 
-    <h2>Cadastrar novos membros</h2>
+	{% block body %}
+	<body>
+		<nav>
+			<div class="container-header header">
+				<a href="/">
+					<img src="../static/assets/logo.png" alt="Logo da igreja" />
+				</a>
+				<div class="navbar">
+					<a href="#sobre">SOBRE</a>
+					<a href="#endereco">INFORMAÇÕES</a>
+					<a class="cadastrar" href="/membros">ACESSAR</a>
+				</div>
+			</div>
+		</nav>
 
-    {% block form %}
-    <form method="POST" action="{{url_for('novo_membro')}}">
+		<main>
+			<section id="sobre" class="container">
+				<div class="hero">
+					<div>
+						<h1 class="title">
+							<div class="highlight">Sobre</div>
+							a Igreja
+						</h1>
+						<p>
+							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias suscipit cumque quae tenetur velit, amet distinctio quibusdam repellendus natus provident fugiat excepturi dicta, minus,
+							porro veniam neque illum quia. Voluptate!
+						</p>
+					</div>
+					<img src="../static/assets/1.jpg" />
+				</div>
+			</section>
+			<section id="social">
+				<div class="container container-social">
+					<div class="social-item historia">
+						<?xml version='1.0' encoding='iso-8859-1'?>
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 470" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 470 470">
+							<g>
+								<path
+									d="m462.5,420h-35.876v-142.99c0-0.02 0-30.01 0-30.01 0-26.191-21.309-47.5-47.5-47.5h-116.624v-68.191c0-9.649-7.851-17.5-17.5-17.5h-2.5v-22.5c0-4.142-3.358-7.5-7.5-7.5s-7.5,3.358-7.5,7.5v22.5h-2.5c-9.649,0-17.5,7.851-17.5,17.5v68.191h-123.043c-26.191,0-47.5,21.309-47.5,47.5v173h-29.457c-4.142,0-7.5,3.358-7.5,7.5s3.358,7.5 7.5,7.5h4.343l4.325,15.137c3.182,11.138 14.748,19.863 26.332,19.863h385c11.584,0 23.15-8.725 26.332-19.862l4.325-15.138h4.343c4.142,0 7.5-3.358 7.5-7.5s-3.358-7.5-7.5-7.5zm-240-288.691c0-1.355 1.145-2.5 2.5-2.5h20c1.355,0 2.5,1.145 2.5,2.5v68.191h-25v-68.191zm-138.043,83.191h294.667c17.92,0 32.5,14.58 32.5,32.5v23c-13.563,1.819-21.473,8.441-28.555,14.402-7.553,6.357-13.519,11.378-26.396,11.378s-18.842-5.021-26.396-11.378c-8.299-6.985-17.706-14.903-36.055-14.903-18.347,0-27.752,7.917-36.051,14.903-7.552,6.357-13.517,11.378-26.391,11.378-12.875,0-18.839-5.021-26.392-11.378-8.299-6.985-17.705-14.903-36.052-14.903-18.347,0-27.752,7.917-36.051,14.903-4.436,3.734-8.626,7.262-14.052,9.321-2.912,1.105-4.838,3.896-4.838,7.012v51.285c0,4.136-3.364,7.5-7.5,7.5-4.135,0-7.5-3.364-7.5-7.5v-51.039c0.105-3.161-1.803-6.105-4.835-7.256-5.427-2.06-9.618-5.588-14.054-9.323-7.081-5.961-14.989-12.583-28.55-14.402v-23c0.001-17.92 14.58-32.5 32.501-32.5zm-32.5,70.688c8.032,1.574 12.983,5.717 18.89,10.69 3.871,3.258 8.145,6.856 13.55,9.688v46.454c0,12.407 10.093,22.5 22.5,22.5s22.5-10.093 22.5-22.5l.001-46.454c5.404-2.832 9.679-6.43 13.549-9.688 7.552-6.357 13.517-11.378 26.391-11.378 12.875,0 18.84,5.021 26.392,11.378 8.299,6.985 17.705,14.903 36.052,14.903s27.753-7.917 36.051-14.903c7.552-6.357 13.517-11.378 26.391-11.378 12.877,0 18.843,5.021 26.396,11.379 8.299,6.985 17.706,14.902 36.055,14.902s27.755-7.917 36.055-14.902c5.909-4.973 10.861-9.117 18.896-10.691v134.812h-359.669v-134.812zm387.452,160.829c-1.343,4.701-7.02,8.983-11.909,8.983h-385c-4.89,0-10.566-4.282-11.909-8.983l-3.148-11.017h415.114l-3.148,11.017z" />
+								<path
+									d="m205.002,95.547c1.778,0 3.563-0.628 4.993-1.905 3.09-2.759 3.358-7.5 0.6-10.59-5.353-5.995-8.3-13.71-8.3-21.726 0-17.564 13.299-35.9 32.706-45.552 19.407,9.651 32.706,27.987 32.706,45.552 0,8.016-2.948,15.731-8.3,21.726-2.759,3.089-2.491,7.831 0.599,10.589 3.088,2.758 7.83,2.491 10.589-0.599 7.81-8.747 12.111-20.01 12.111-31.716 0-24.235-18.382-49.196-44.702-60.699-1.915-0.837-4.092-0.836-6.007,0-26.32,11.503-44.702,36.463-44.702,60.698 0,11.706 4.301,22.969 12.111,31.716 1.481,1.661 3.534,2.507 5.596,2.506z" />
+							</g>
+						</svg>
+						<h2>14 anos de história</h2>
+					</div>
+					<div class="social-item facebook">
+						<a href="https://www.facebook.com/igrejacristasenhorjusticanossa" target="_blank">
+							<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+								<path
+									d="M 21.800781 0 L 2.199219 0 C 1 0 0 1 0 2.199219 L 0 21.800781 C 0 23 1 24 2.199219 24 L 12 24 L 12 14 L 9 14 L 9 11 L 12 11 L 12 8 C 12 5.5 13 4 16 4 L 19 4 L 19 7 L 17.699219 7 C 16.800781 7 16 7.800781 16 8.699219 L 16 11 L 20 11 L 19.5 14 L 16 14 L 16 24 L 21.800781 24 C 23 24 24 23 24 21.800781 L 24 2.199219 C 24 1 23 0 21.800781 0 Z"></path>
+							</svg>
+						</a>
+						<a href="https://www.facebook.com/igrejacristasenhorjusticanossa"><h2>Atualizações importantes, clique aqui</h2></a>
+					</div>
+				</div>
+			</section>
+			<section id="endereco">
+				<div class="container">
+					<h1 class="title">
+						<div class="highlight">Informações</div>
+						sobre o local
+					</h1>
+					<div class="info">
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117000.67047699273!2d-46.51880354473008!3d-23.59461369440696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5d63268de2c7%3A0x43924aa32a00f470!2sIgreja%20Cristã%20Senhor%20Justiça%20Nossa!5e0!3m2!1spt-BR!2sbr!4v1701972264081!5m2!1spt-BR!2sbr"
+							width="600"
+							height="450"
+							style="border: 0"
+							allowfullscreen=""
+							loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"></iframe>
+						<div class="horarios-tabela">
+							<h2>Horário de funcionamento</h2>
+							<hr />
+							<table>
+								<tr>
+									<td class="dia">Segunda</td>
+									<td><div class="horario">FECHADO</div></td>
+								</tr>
+								<tr>
+									<td class="dia">Terça</td>
+									<td><div class="horario">FECHADO</div></td>
+								</tr>
+								<tr>
+									<td class="dia">Quarta</td>
+									<td>
+										<div class="horario">20:00</div>
+										às
+										<div class="horario">22:00</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="dia">Quinta</td>
+									<td><div class="horario">FECHADO</div></td>
+								</tr>
+								<tr>
+									<td class="dia">Sexta</td>
+									<td>
+										<div class="horario">20:00</div>
+										às
+										<div class="horario">22:00</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="dia">Sábado</td>
+									<td>
+										<div class="horario">18:00</div>
+										às
+										<div class="horario">20:00</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="dia">Domingo</td>
+									<td>
+										<div class="horario">18:00</div>
+										às
+										<div class="horario">20:00</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
 
-        {{ form.csrf_token }}
-
-        {{ form.nome.label() }}
-        {{ form.nome() }}
-        <br><br>
-        {{ form.data_nascimento.label() }}
-        {{ form.data_nascimento() }}
-        <br><br>
-        {{ form.numero.label() }}
-        {{ form.numero() }}
-        <br><br>
-        {{ form.endereco.label() }}
-        {{ form.endereco() }}
-        <br><br>
-        {{ form.cargo.label() }}
-        {{ form.cargo() }}
-        <br><br>
-        {{ form.botao_confirmacao }}
-
-    </form>
-    {% endblock %}
-
-    <br>
-
-    <h2>Membros</h2>
-    
-
-    <form method="POST" action="{{url_for('filtrar_membros')}}">
-
-        {{ form2.csrf_token }}
-
-        {{ form2.nome.label() }}
-        {{ form2.nome() }}
-        
-        {{ form2.cargo.label() }}
-        {{ form2.cargo() }}
-        
-        {{ form2.botao_confirmacao }}
-
-    </form>
-
-    <br>
-    <table border="1" class="table">
-        <tr>
-            <td>Id</td>
-            <td>Nome</td>
-            <td>Data de Nascimento</td>
-            <td>Numero</td>
-            <td>Endereço</td>
-            <td>Cargo</td>
-            <td>Ações</td>
-        </tr>
-    
-        {% for membro in lista_membros %}
-        <tr>
-            <td>{{membro.id}}</td>
-            <td>{{membro.nome}}</td>
-            <td>{{membro.data_nascimento}}</td>
-            <td>{{membro.numero}}</td>
-            <td>{{membro.endereco}}</td>
-            <td>{{membro.cargo}}</td>
-            <td><a href="{{ url_for('excluir', id = membro.id) }}" style="text-decoration: none;">Excluir</a> | <a href="{{ url_for('editar', id = membro.id) }}" style="text-decoration: none">Editar</a></td>
-        </tr>
-        {% endfor %}
-    </table>
-
-    <h2>Aniversariantes do Mês</h2>
-
-    <table border="1" class="table">
-        <tr>
-            <td>Id</td>
-            <td>Nome</td>
-            <td>Data de Nascimento</td>
-            <td>Numero</td>
-            <td>Endereço</td>
-            <td>Cargo</td>
-        </tr>
-    
-        {% for membro in lista_aniversariantes %}
-        <tr>
-            <td>{{membro.id}}</td>
-            <td>{{membro.nome}}</td>
-            <td>{{membro.data_nascimento}}</td>
-            <td>{{membro.numero}}</td>
-            <td>{{membro.endereco}}</td>
-            <td>{{membro.cargo}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-
-
-</body>
-{% endblock %}
-
+		<footer>
+			<div class="container footer">
+				<div class="footer-info">
+					<img src="../static/assets/logoW.png" alt="Logo da igreja" />
+					<p>R. Gen. Porfírio da Paz, 1112 - Vila Bancaria, São Paulo - SP</p>
+					<p>2024 - Todos os direitos reservados</p>
+					<p>(11) 99999-9999</p>
+				</div>
+				<div class="footer-nav">
+					<h1>Igreja Cristã Senhor<br />Justiça Nossa</h1>
+					<a href="#sobre">Sobre</a>
+					<a href="#endereco">Informações</a>
+				</div>
+			</div>
+		</footer>
+	</body>
+	{% endblock %}
 </html>

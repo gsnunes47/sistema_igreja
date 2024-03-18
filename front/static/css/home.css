@@ -1,0 +1,128 @@
+body {
+	background-color: white;
+}
+
+main {
+	max-width: 100%;
+}
+
+section {
+	display: block;
+	width: 100%;
+}
+
+.title {
+	margin-bottom: 50px;
+}
+
+.hero {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: 70px;
+}
+
+.hero p {
+	font-size: 30px;
+}
+
+.info {
+	display: flex;
+	justify-content: space-between;
+}
+
+#sobre {
+	margin-block: 100px;
+}
+
+#social {
+	background-image: linear-gradient(black, black), url('../assets/2.jpg');
+	background-blend-mode: saturation;
+	/* background-color: var(--gray); */
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin: 0 !important;
+	padding-block: 60px;
+	color: white;
+}
+
+.container-social {
+	display: flex;
+	justify-content: space-around;
+	backdrop-filter: blur(10px) brightness(80%);
+	padding-block: 10px;
+	border-radius: 10px;
+}
+
+.social-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+}
+
+.facebook > a {
+	height: fit-content;
+}
+
+#social svg {
+	width: 70px;
+	fill: white;
+}
+
+#endereco {
+	padding-block: 100px;
+	margin: 0;
+}
+
+.horarios-tabela {
+	background-color: var(--color1);
+	border-radius: 20px;
+	padding: 30px;
+	width: fit-content;
+	height: fit-content;
+}
+
+.horarios-tabela h2 {
+	text-align: center;
+	color: white;
+	text-transform: uppercase;
+	font-weight: 800;
+}
+
+.horarios-tabela hr {
+	background-color: white;
+	width: 100%;
+	height: 2px;
+	border-radius: 10px;
+}
+
+table {
+	width: 100%;
+}
+
+tr {
+	margin-block: 30px;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	font-weight: 400;
+	font-size: 1.2rem;
+}
+
+td {
+	text-transform: uppercase;
+	color: white;
+}
+
+.dia {
+	font-weight: 600;
+}
+
+.horario {
+	display: inline;
+	background-color: white;
+	color: var(--color1);
+	padding: 5px 15px;
+}
