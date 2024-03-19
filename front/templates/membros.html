@@ -74,7 +74,44 @@
 										stroke-linejoin="round" />
 								</svg>
 							</a>
-							<a href="{{ url_for('editar', id = membro.id) }}">
+
+
+							<!-- <a href="{{ url_for('editar', id = membro.id) }}"> -->
+							<dialog>
+								<h2>Editar membro</h2>
+
+									<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam quaerat quos eligendi? Nam nesciunt hic culpa, quisquam consectetur, maxime nobis facere eligendi aspernatur, nostrum amet enim cupiditate dolore dolor rem.</p> -->
+
+									<form method="POST" action="{{url_for('editar', id = membro.id)}}">
+
+										{{ form3.csrf_token }}
+
+										{{ form3.nome.label() }}
+										{{ form3.nome(value=membro.nome)}}
+										<br><br>
+										{{ form3.data_nascimento.label() }}
+										{{ form3.data_nascimento(value=membro.data_nascimento) }}
+										<br><br>
+										{{ form3.numero.label() }}
+										{{ form3.numero(value=membro.numero) }}
+										<br><br>
+										{{ form3.endereco.label() }}
+										{{ form3.endereco(value=membro.endereco) }}
+										<br><br>
+										{{ form3.cargo.label() }}
+										{{ form3.cargo() }}
+										<br><br>
+										{{ form3.botao_confirmacao() }}
+										
+										
+									</form>
+									<!-- <br><br>
+									<button>Fechar</button>
+									<br><br> -->
+									
+							</dialog>	
+
+
 								<?xml version="1.0" encoding="utf-8"?>
 								<svg class="editar" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path
@@ -145,6 +182,7 @@
 
 		<script src="../static/scripts/inputs.js"></script>
 		<script src="../static/scripts/slash-to-dot.js"></script>
+		<script src="../static/scripts/modal.js"></script>
 	</body>
 	{% endblock %}
 </html>

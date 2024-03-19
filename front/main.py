@@ -14,6 +14,7 @@ def home():
 def membros():
     form = NovoMembro()
     form2 = FiltarMembros()
+    form3 = EditarMembro()
     lista_membros = requests.get('https://api-igreja.onrender.com/membros').json()
     mes_atual = datetime.datetime.now().month
     if mes_atual <  10:
@@ -22,7 +23,7 @@ def membros():
     for membro in lista_membros:
         if membro['data_nascimento'][3:5] == mes_atual:
             lista_aniversariantes.append(membro)
-    return render_template('membros.html', form=form, form2=form2, lista_membros=lista_membros, lista_aniversariantes=lista_aniversariantes, mes_atual=str(mes_atual))  
+    return render_template('membros.html', form=form, form2=form2, form3=form3, lista_membros=lista_membros, lista_aniversariantes=lista_aniversariantes, mes_atual=str(mes_atual))  
 
 @app.route('/novo_membro', methods=['GET', 'POST'])
 def novo_membro():
@@ -47,6 +48,7 @@ def novo_membro():
 def filtrar_membros():
     form = NovoMembro()
     form2 = FiltarMembros()
+    form3 = EditarMembro()
     lista_membros = requests.get('https://api-igreja.onrender.com/membros').json()
     mes_atual = datetime.datetime.now().month
     lista_aniversariantes = []
@@ -64,8 +66,8 @@ def filtrar_membros():
             else:
                 if form2.nome.data in membro['nome'] and membro['cargo'] == form2.cargo.data:
                     membro_filtrado.append(membro)
-        return render_template('membros.html', form=form, form2=form2, lista_membros=membro_filtrado, lista_aniversariantes=lista_aniversariantes, mes_atual=str(mes_atual))  
-    return render_template('membros.html', form=form, form2=form2, lista_membros=lista_membros, lista_aniversariantes=lista_aniversariantes, mes_atual=str(mes_atual))  
+        return render_template('membros.html', form=form, form2=form2, form3=form3, lista_membros=membro_filtrado, lista_aniversariantes=lista_aniversariantes, mes_atual=str(mes_atual))  
+    return render_template('membros.html', form=form, form2=form2, form3=form3, lista_membros=lista_membros, lista_aniversariantes=lista_aniversariantes, mes_atual=str(mes_atual))  
 
 @app.route('/excluir/<id>')
 def excluir(id):
@@ -80,13 +82,9 @@ def excluir(id):
 
 @app.route('/editar/<id>', methods=['POST', 'GET'])
 def editar(id):
-    id = int(id)
     form = EditarMembro()
+    id = int(id)
     membros = requests.get('https://api-igreja.onrender.com/membros').json()
-    for membro in membros:
-        if membro['id'] == id:
-            dados_membro = membro
-            dados_membro['data_nascimento'] = datetime.date(int(dados_membro["data_nascimento"][6:]), int(dados_membro["data_nascimento"][3:5]), int(dados_membro["data_nascimento"][:2]))
     if form.is_submitted():
         data = form.data_nascimento.data.strftime('%d-%m-%Y - %H:%M:%S')[:10]
         edicao = f"""{"{"}"id": "{id}", "nome": "{form.nome.data}", "data_nascimento": "{data}", "numero": "{form.numero.data}", "endereco": "{form.endereco.data}", "cargo": "{form.cargo.data}"{"}"}"""
@@ -94,7 +92,7 @@ def editar(id):
         edicao = edicao.json
         editar_membro = requests.put(url='https://api-igreja.onrender.com/membros', json=edicao)
         return redirect(url_for('membros'))
-    return render_template('editar.html', form=form, dados_membro=dados_membro)
+    return render_template('editar.html', form3=form)
 
 if __name__ == '__main__':
     app.run(debug=True, port=8081)
