@@ -68,7 +68,22 @@ label.perma {
 	color: var(--black);
 }
 
-.cadastrar form {
+@media only screen and (max-width: 992px) {
+	label {
+		font-size: 0.875rem;
+		top: 10px;
+		left: 50%;
+	}
+	label.active,
+	label.perma {
+		font-size: 0.675rem;
+		top: -13px;
+		left: 10px;
+	}
+}
+
+.cadastrar form,
+dialog form {
 	display: grid;
 	grid-template-areas:
 		'nome nome cargo'
@@ -81,26 +96,32 @@ label.perma {
 	text-align: center;
 }
 
-.novo-nom {
+.novo-nom,
+.modal-nom {
 	grid-area: nome;
 }
 
-.novo-car {
+.novo-car,
+.modal-car {
 	grid-area: cargo;
 }
 
-.novo-nas {
+.novo-nas,
+.modal-nas {
 	grid-area: nasc;
 }
 
-.novo-tel {
+.novo-tel,
+.modal-tel {
 	grid-area: tel;
 }
 
-.novo-end {
+.novo-end,
+.modal-end {
 	grid-area: end;
 }
 
-.novo-sub {
+.novo-sub,
+.modal-sub {
 	grid-area: submit;
 }

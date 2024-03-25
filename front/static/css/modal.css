@@ -1,0 +1,30 @@
+body:has(dialog[open]) {
+	overflow: hidden;
+}
+
+dialog {
+	width: 100%;
+	position: relative;
+	padding: 40px;
+	top: 50%;
+	outline: none;
+	/* bottom: 50%; */
+	transform: translateY(-50%);
+}
+
+dialog h2 {
+	margin-bottom: 80px;
+}
+
+.modal-close {
+	position: absolute;
+	top: 40px;
+	right: 40px;
+	cursor: pointer;
+	width: 45px;
+	height: 45px;
+	font-size: 20px;
+	color: var(--darkestgray);
+	font-weight: bold;
+	background: none;
+}

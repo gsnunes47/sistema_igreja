@@ -1,31 +1,22 @@
-const button_editar = document.querySelectorAll('.editar')
-const modal = document.querySelectorAll('dialog')
-let cont = 0
+const editar = document.querySelectorAll('.editar');
+const modal = document.querySelectorAll('dialog');
+const fechar = document.querySelectorAll('.modal-close');
 
-button_editar.forEach(botao2 => {
-    const cont2 = cont
-    botao2.addEventListener("click",function(){
-        modal[cont2].showModal()
-    })
-    cont += 1
+editar.forEach((btn, i) => {
+	btn.addEventListener('click', () => {
+		modal[i].showModal();
+	});
+	fechar[i].addEventListener('click', () => {
+		modal[i].close();
+	});
 });
 
-// let cont2 = 0
-// const button_sair = document.querySelectorAll('button')
-
-// modal.forEach(pop => {
-//     alert(pop.innerHTML)
-// })
-
-// button_editar.forEach(pop => {
-//     alert(pop.innerHTML)
-// })
-
-
-// button_sair.forEach(botao => {
-//     botao.onclick = function(){
-//         modal.close()
-//         cont2 += 1
-//     }
-// });
-
+modal.forEach((el) => {
+	el.addEventListener('click', (e) => {
+		let rect = el.getBoundingClientRect();
+		let isInDialog = rect.top <= e.clientY && e.clientY <= rect.top + rect.height && rect.left <= e.clientX && e.clientX <= rect.left + rect.width;
+		if (!isInDialog) {
+			el.close();
+		}
+	});
+});

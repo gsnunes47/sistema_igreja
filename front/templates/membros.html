@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="../static/css/geral.css" />
 		<link rel="stylesheet" href="../static/css/header.css" />
 		<link rel="stylesheet" href="../static/css/membros.css" />
+		<link rel="stylesheet" href="../static/css/modal.css" />
 		<link rel="stylesheet" href="../static/css/inputs.css" />
 		<link rel="stylesheet" href="../static/css/footer.css" />
 	</head>
@@ -75,45 +76,33 @@
 								</svg>
 							</a>
 
+							<dialog class="container">
+								<h2>
+									<div class="highlight">Editar</div>
+									membro
+								</h2>
+								<form method="POST" action="{{url_for('editar', id = membro.id)}}">
+									{{ form3.csrf_token }}
+									<div class="input-wrapper modal-nom">{{ form3.nome.label() }} {{ form3.nome(value=membro.nome, class="form-input")}}</div>
 
-							<!-- <a href="{{ url_for('editar', id = membro.id) }}"> -->
-							<dialog>
-								<h2>Editar membro</h2>
+									<div class="input-wrapper modal-nas">
+										{{ form3.data_nascimento.label(class="perma") }} {{ form3.data_nascimento(value=membro.data_nascimento, class="form-input", pattern="\d{2}-\d{2}-\d{4}") }}
+									</div>
 
-									<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam quaerat quos eligendi? Nam nesciunt hic culpa, quisquam consectetur, maxime nobis facere eligendi aspernatur, nostrum amet enim cupiditate dolore dolor rem.</p> -->
+									<div class="input-wrapper modal-tel">{{ form3.numero.label() }} {{ form3.numero(value=membro.numero, class="form-input") }}</div>
 
-									<form method="POST" action="{{url_for('editar', id = membro.id)}}">
+									<div class="input-wrapper modal-end">{{ form3.endereco.label() }} {{ form3.endereco(value=membro.endereco, class="form-input") }}</div>
 
-										{{ form3.csrf_token }}
+									<div class="input-wrapper modal-car">{{ form3.cargo.label() }} {{ form3.cargo(class="form-input") }}</div>
 
-										{{ form3.nome.label() }}
-										{{ form3.nome(value=membro.nome)}}
-										<br><br>
-										{{ form3.data_nascimento.label() }}
-										{{ form3.data_nascimento(value=membro.data_nascimento) }}
-										<br><br>
-										{{ form3.numero.label() }}
-										{{ form3.numero(value=membro.numero) }}
-										<br><br>
-										{{ form3.endereco.label() }}
-										{{ form3.endereco(value=membro.endereco) }}
-										<br><br>
-										{{ form3.cargo.label() }}
-										{{ form3.cargo() }}
-										<br><br>
-										{{ form3.botao_confirmacao() }}
-										
-										
-									</form>
-									<!-- <br><br>
-									<button>Fechar</button>
-									<br><br> -->
-									
-							</dialog>	
+									{{ form3.botao_confirmacao(class="modal-sub") }}
+								</form>
+								<button class="modal-close">X</button>
+							</dialog>
 
-
-								<?xml version="1.0" encoding="utf-8"?>
-								<svg class="editar" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<?xml version="1.0" encoding="utf-8"?>
+							<button class="editar">
+								<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path
 										d="M15.4998 5.49994L18.3282 8.32837M3 20.9997L3.04745 20.6675C3.21536 19.4922 3.29932 18.9045 3.49029 18.3558C3.65975 17.8689 3.89124 17.4059 4.17906 16.9783C4.50341 16.4963 4.92319 16.0765 5.76274 15.237L17.4107 3.58896C18.1918 2.80791 19.4581 2.80791 20.2392 3.58896C21.0202 4.37001 21.0202 5.63634 20.2392 6.41739L8.37744 18.2791C7.61579 19.0408 7.23497 19.4216 6.8012 19.7244C6.41618 19.9932 6.00093 20.2159 5.56398 20.3879C5.07171 20.5817 4.54375 20.6882 3.48793 20.9012L3 20.9997Z"
 										stroke="#000000"
@@ -121,7 +110,7 @@
 										stroke-linecap="round"
 										stroke-linejoin="round" />
 								</svg>
-							</a>
+							</button>
 						</td>
 					</tr>
 					{% endfor %}
@@ -137,12 +126,12 @@
 				</h2>
 				<table class="niver-table">
 					<tr>
-						<td>Id</td>
-						<td>Nome</td>
-						<td>Data de Nascimento</td>
-						<td>Numero</td>
-						<td>Endereço</td>
-						<td>Cargo</td>
+						<th>Id</th>
+						<th>Nome</th>
+						<th>Data de Nascimento</th>
+						<th>Numero</th>
+						<th>Endereço</th>
+						<th>Cargo</th>
 					</tr>
 
 					{% for membro in lista_aniversariantes %}

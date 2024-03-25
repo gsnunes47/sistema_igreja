@@ -60,6 +60,8 @@ section {
 	align-items: center;
 	justify-content: center;
 	gap: 20px;
+	text-align: center;
+	flex: 1;
 }
 
 .facebook > a {
@@ -125,4 +127,29 @@ td {
 	background-color: white;
 	color: var(--color1);
 	padding: 5px 15px;
+}
+
+@media only screen and (max-width: 1200px) {
+	.info {
+		flex-direction: column;
+		gap: 100px;
+	}
+	.horarios-tabela {
+		margin-inline: auto;
+	}
+	iframe {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 992px) {
+	.hero img {
+		display: none;
+	}
+	.hero {
+		display: block;
+	}
+	.horario {
+		padding: 2px 10px;
+	}
 }

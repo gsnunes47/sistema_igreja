@@ -50,7 +50,12 @@ table svg {
 }
 
 .editar {
+	display: inherit;
 	background-color: rgb(226, 153, 17);
+	height: fit-content;
+	width: fit-content;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
 td,
@@ -64,7 +69,7 @@ tr:first-child {
 	background-color: var(--color1dark);
 }
 
-tr:first-child td {
+th {
 	text-transform: uppercase;
 }
 
@@ -79,4 +84,17 @@ th:hover {
 .actions {
 	display: flex;
 	gap: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+	.container {
+		max-width: 95%;
+	}
+}
+
+@media only screen and (max-width: 992px) {
+	td,
+	th {
+		padding: 10px 8px;
+	}
 }

@@ -1,32 +1,21 @@
 {% extends "home.html" %}
 
-
-
 <h2>Editar membro</h2>
 
-    {% block form3 %}
+{% block form3 %}
 
-        <form method="POST">
+<form method="POST">
+	{{ form3.csrf_token }} {{ form3.nome.label() }} {{ form3.nome(value=dados_membro.nome)}}
+	<br /><br />
+	{{ form3.data_nascimento.label() }} {{ form3.data_nascimento(value=dados_membro.data_nascimento) }}
+	<br /><br />
+	{{ form3.numero.label() }} {{ form3.numero(value=dados_membro.numero) }}
+	<br /><br />
+	{{ form3.endereco.label() }} {{ form3.endereco(value=dados_membro.endereco) }}
+	<br /><br />
+	{{ form3.cargo.label() }} {{ form3.cargo() }}
+	<br /><br />
+	{{ form3.botao_confirmacao }}
+</form>
 
-            {{ form3.csrf_token }}
-
-            {{ form3.nome.label() }}
-            {{ form3.nome(value=dados_membro.nome)}}
-            <br><br>
-            {{ form3.data_nascimento.label() }}
-            {{ form3.data_nascimento(value=dados_membro.data_nascimento) }}
-            <br><br>
-            {{ form3.numero.label() }}
-            {{ form3.numero(value=dados_membro.numero) }}
-            <br><br>
-            {{ form3.endereco.label() }}
-            {{ form3.endereco(value=dados_membro.endereco) }}
-            <br><br>
-            {{ form3.cargo.label() }}
-            {{ form3.cargo() }}
-            <br><br>
-            {{ form3.botao_confirmacao }}
-            
-        </form>
-
-    {% endblock %}
+{% endblock %}
