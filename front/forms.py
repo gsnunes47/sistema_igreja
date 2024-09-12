@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, DateField, SelectField
+from wtforms import StringField, SubmitField, DateField, SelectField, PasswordField
 from wtforms.validators import DataRequired, Length
 
 class NovoMembro(FlaskForm):
@@ -22,3 +22,8 @@ class FiltarMembros(FlaskForm):
     nome = StringField("Nome")
     cargo = SelectField("Cargo Eclesiastico", choices = [('vazio', 'Selecione um cargo'), ('pastor', 'Pastor'), ('diacono', 'Diacono'), ('presbítero', 'Presbítero'), ('cooperador', 'Cooperador'), ('membro', 'Membro')])
     botao_confirmacao = SubmitField("Filtrar")
+
+class TestLogin(FlaskForm):
+    login = StringField("Login")
+    senha = PasswordField("Senha")
+    botao_confirmacao = SubmitField("Login")
